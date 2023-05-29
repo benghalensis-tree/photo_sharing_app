@@ -11,6 +11,37 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class = "container">
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+      <header class = "header clearfix">
+        <nav>
+          <ul class = "top_menu clearfix"> 
+            <li class = "right"><%= link_to "投稿一覧", feeds_path %>
+            <li class = "right"><%= link_to '新規投稿', new_feed_path %>
+
+          <% if logged_in? %>
+            <li class = "right"><%= link_to "プロフィール", user_path(current_user.id) %>
+            <li class = "right"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+          <% else %>
+            <li class = "right"><%= link_to "新規登録", new_user_path %>
+            <li class = "right"><%= link_to "ログイン", new_session_path %>
+          <% end %>
+          </ul>
+        </nav>
+      </header>
+<%#--  
+      <div class="image_container">
+        <%=image_tag "blog.webp", class: "image_area"%>
+      </div>
+      
+      <%= yield %>
+      <footer class="footer">
+        <p>Copyright ©2023 starlog.</p>
+      </footer>
+    </div>
   </body>
 </html>
