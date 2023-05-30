@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<div class = "content_area">
 
 <h1>お気に入り一覧</h1>
 
@@ -14,13 +15,15 @@
   <tbody>
     <% @favorites.each do |favorite| %>
       <tr>
-        <td><%= image_tag favorite.image.url %></td>
+        <td><%= image_tag favorite.image.url, class: 'picture' %></td>
         <td><%= favorite.content %></td>
         
       </tr>
     <% end %>
   </tbody>
 </table>
+
+</div>
 
 <br>
 
