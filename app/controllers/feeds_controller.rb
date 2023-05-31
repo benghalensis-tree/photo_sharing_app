@@ -3,7 +3,6 @@ class FeedsController < ApplicationController
 
   skip_before_action :login_required, only: [:index, :show]
 
-  
   def index
     @feeds = Feed.all
   end
@@ -54,7 +53,6 @@ class FeedsController < ApplicationController
 
   def destroy
     @feed.destroy
-
     respond_to do |format|
       format.html { redirect_to feeds_url, notice: "Feed was successfully destroyed." }
       format.json { head :no_content }
@@ -63,18 +61,14 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = Feed.new(feed_params)
-    @feed.user_id = current_user.id
-
-    
+    @feed.user_id = current_user.id 
   end
 
-  private
-    
+  private   
   def set_feed
     @feed = Feed.find(params[:id])
   end
-
-  
+ 
   def feed_params
     params.require(:feed).permit(:image, :image_cache, :content)
   end
