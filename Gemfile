@@ -63,3 +63,5 @@ gem 'rexml'
 group :development do
   gem 'letter_opener_web'
 end
+
+gem 'dotenv-rails'
