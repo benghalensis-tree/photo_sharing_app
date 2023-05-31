@@ -21,6 +21,9 @@ class FeedsController < ApplicationController
   end
 
   def edit
+    unless @feed.user == current_user
+      redirect_to new_user_path
+    end
   end
 
   def create
