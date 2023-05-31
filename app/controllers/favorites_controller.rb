@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  before_action :set_feed, only: %i[ show edit update destroy ]
+
+  skip_before_action :login_required, only: [:index, :show]
+
   def index
     @favorites = current_user.favorite_feeds
   end

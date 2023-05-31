@@ -7,4 +7,4 @@
 <p>メールアドレス: <%= @user.email %></p>
 <p>プロフィール: <%= @user.content %></p>
 
-<%= link_to "編集", edit_user_path(@user.id)%>
+<%= link_to "編集", edit_user_path(@user.id) if @user == current_user%>

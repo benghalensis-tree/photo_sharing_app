@@ -9,8 +9,8 @@
         <p><%= feed.content %></p>
         <p><%= feed.user.name %></p>
         <p><%= link_to 'Show', feed %></p>
-        <p><%= link_to 'Edit', edit_feed_path(feed) %></p>
-        <p><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p><%= link_to 'Edit', edit_feed_path(feed) if feed.user == current_user %></p>
+        <p><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } if feed.user == current_user%></p>
       </li>
     <% end %>
   <ul>
